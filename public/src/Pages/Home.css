@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   }
+   
+   .home {
+    
+    padding: 50px;
+    width: 100%;
+   }
+   
+   .welcome {
+    padding-bottom: 15px;
+    text-align: center;
+
+   }
+   
+   .welcome h1 {
+    font-size: 33px;
+    margin-bottom: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    color: black;
+  
+   }
+   
+   .welcome h2 {
+    font-size: 36px;
+    margin-bottom: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: blue;
+    font-weight: bolder;
+   }
+   
+   .welcome h3 {
+    font-size: 24px;
+    margin-bottom: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+   }
+   
+   .intro {
+    padding-bottom: 20px;
+    text-align: center;
+
+   }
+   
+   .intro p {
+    font-size: 19px;
+    margin-bottom: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 10;
+   }
+   
+   .links {
+    padding-bottom: 30px;
+    text-align: center;
+
+   }
+   
+   .links p {
+    font-size: 18px;
+    margin-bottom: 10px;
+   }
+   
+   .links button {
+    font-size: 18px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 33px;
+    background-color: black;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 700;
+    box-shadow: 5px 0px 10px 2px rgb(64, 64, 64);
+    &:hover {
+      background-color: #4000ff;
+    }
+  
+  
+   }
+   Nav{
+    display: flex;
+    align-items: center;
+   }
+  
+   .navb{
+    background-color: black;
+   }
+   .brand-text{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.5rem;
+   }
+   .justify-content-end{
+    font-weight: bold;
+    color: blue;
+  
+   }
+   .page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  }
+  .content-wrap {
+  flex: 1;
+  }
+  
+  .col-sm{
+    font-weight: bold;
+  }
+  
+  .backcolor{
+  background-color: rgb(207, 198, 195);
+  }
+  .avatar{
+  border-radius: 0;
+  box-shadow: 10px 0px 50px 12px black;
+  }
+  
+  #homeinfo{
+  padding-top: 30px;
+  }
+  button{
+    border-radius: 33%;
+    padding: 0.2rem;
+    
+  }
