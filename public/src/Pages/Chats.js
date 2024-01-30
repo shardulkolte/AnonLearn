@@ -199,8 +199,10 @@ const Chats = () => {
                                 margin: '20px 0', // Add some margin for spacing
                             }} />
                         </Stack>
-                        <Stack direction={"column"} sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }} spacing={1}>
-                            <SimpleBarStyle timeout={500} clickOnTrack={false}>
+                        <Stack direction={"column"} sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}>
+                            <Stack spacing={2}>
+
+                            {/* <SimpleBarStyle timeout={500} clickOnTrack={false}> */}
                                 <Stack spacing={2.4}>
                                     <Typography color={"white"} variant="subtitle2">
                                         Pinned
@@ -218,7 +220,9 @@ const Chats = () => {
                                         return <ChatElement {...el} />
                                     })}
                                 </Stack>
-                            </SimpleBarStyle>
+                            {/* </SimpleBarStyle> */}
+                            </Stack>
+
 
 
                         </Stack>
