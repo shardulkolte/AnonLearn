@@ -2,6 +2,8 @@ import React from "react";
 import { Avatar, Box, Divider, IconButton, Stack, Switch } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Link, useSearchParams } from "react-router-dom";
+import Chats from "./Chats";
+import Conversation from "../Layouts/Conversation";
 
 
 
@@ -15,20 +17,19 @@ const GeneralApp = () => {
 
   return (
     <>
-    {/* <div style={{ display: 'flex', margin: 0, padding: 0 }}>
-      <Box sx={{
-          height: "100vh",
-          width: 90,
+      {/* {chats} */}
+      <Stack direction={'row'} sx={{ width: "100%" }}>
 
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? "#000000"
-              : theme.palette.background.paper,
-          boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
-        }}>
-        <h1></h1>
-      </Box>
-      </div> */}
+        <Chats />
+        <Box 
+        sx={{ height: "100%", 
+        width: "calc(100vw - 420px)", 
+        backgroundColor: "#949494" }}>
+          {/* Conversation */}
+          <Conversation />
+
+        </Box>
+      </Stack>
     </>
   );
 };

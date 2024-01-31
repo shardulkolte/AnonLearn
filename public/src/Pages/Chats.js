@@ -7,7 +7,9 @@ import { faker } from "@faker-js/faker";
 import Badge from "@mui/material/Badge";
 import { ChatList } from "../Data/Icons";
 import SimpleBar from "simplebar-react";
-import { SimpleBarStyle } from "../components/Scrollbar";
+// import { SimpleBarStyle } from "../components/Scrollbar";
+
+  
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -46,7 +48,7 @@ const truncateText = (string, n) => {
 const ChatElement = ({ id, img, name, msg, time, unread, online }) => {
     return (
         <Box sx={{
-            width: "100%",
+            width: "95%",
             height: 60,
             borderRadius: 1,
             backgroundColor: "#404040"
@@ -89,33 +91,7 @@ const ChatElement = ({ id, img, name, msg, time, unread, online }) => {
                 </Stack>
             </Stack>
 
-            {/* <Stack direction={"row"} alignItems={'center'} justifyContent={"space-between"}>
-                <Stack direction={"row"} spacing={2}>
-                <StyledBadge overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    variant="dot">
-                    <Avatar src={faker.image.avatar()} />
-                </StyledBadge>
-                <Stack spacing={0.3}>
-                    <Typography color={"white"} variant="subtitle2">
-                        Siddhi
-                    </Typography>
-                    <Typography color={"white"} variant="caption">
-                        I Love You So much...
-                    </Typography>
-                </Stack>
-                <Stack spacing={2} alignItems={"center"}>
-                    <Typography color={"white"} sx={{fontWeight:600}} variant="caption">
-                        9:36
-                    </Typography>
-                    <Badge color="primary" badgeContent={1}>
-
-                    </Badge>
-                </Stack>
-                </Stack>
-
-                
-            </Stack> */}
+            
         </Box>
     )
 }
@@ -160,16 +136,16 @@ const Chats = () => {
     return (
         <>
             <div style={{ display: 'flex', margin: 0, padding: 0 }}>
-                <Box sx={{
+                <Box borderRight={1}
+                borderLeft={1}
+                    borderColor="#000" 
+                    sx={{
                     position: "relative",
-
-                    width: 350,
-                    backgroundColor:
-                        theme.palette.mode === "light"
-                            ? "#000000"
-                            : theme.palette.background,
-
+                    
+                    width: 340,
+                    backgroundColor:"#202020",
                     boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
+                    
                 }}>
                     <Stack padding={3} spacing={2} sx={{ height: "100vh", }}>
                         <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} >
@@ -199,12 +175,12 @@ const Chats = () => {
                                 margin: '20px 0', // Add some margin for spacing
                             }} />
                         </Stack>
-                        <Stack direction={"column"} sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}>
-                            <Stack spacing={2}>
+                        <Stack direction={"column"} sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }} spacing={2}>
+                            {/* <Stack spacing={2}> */}
 
-                            {/* <SimpleBarStyle timeout={500} clickOnTrack={false}> */}
+                            {/* <SimpleBarStyle > */}
                                 <Stack spacing={2.4}>
-                                    <Typography color={"white"} variant="subtitle2">
+                                    <Typography  variant="subtitle2" sx={{color:"white"}}>
                                         Pinned
                                     </Typography>
                                     {ChatList.filter((el) => el.pinned).map((el) => {
@@ -213,15 +189,16 @@ const Chats = () => {
                                 </Stack>
 
                                 <Stack spacing={2.4}>
-                                    <Typography color={"white"} variant="subtitle2">
+                                    <Typography variant="subtitle2" sx={{color:"white" }}>
                                         All Chats
                                     </Typography>
                                     {ChatList.filter((el) => !el.pinned).map((el) => {
                                         return <ChatElement {...el} />
                                     })}
                                 </Stack>
-                            {/* </SimpleBarStyle> */}
-                            </Stack>
+                                {/* </SimpleBarStyle> */}
+                            
+                            {/* </Stack> */}
 
 
 

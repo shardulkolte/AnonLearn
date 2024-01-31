@@ -19,15 +19,15 @@ function Sidebar() {
   return (
     <>
       <Box
+      borderRight={1}
+      borderLeft={1}
+          borderColor="#000" 
         p={2}
         sx={{
           height: "100vh",
-          width: 90,
+          width: 80,
 
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? "#505050"
-              : theme.palette.background.paper,
+          backgroundColor:"#505050",
           boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
         }}>
         <Stack direction={'column'}
