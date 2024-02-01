@@ -250,7 +250,7 @@ const Chat_History = [
   },
   {
     type: "msg",
-    message: "Hi 👋 Panda, not bad, u ?",
+    message: "Hi 👋 Buddy, not bad, u ?",
     incoming: false,
     outgoing: true,
   },
@@ -300,7 +300,7 @@ const Chat_History = [
   {
     type: "msg",
     subtype: "reply",
-    reply: "This is a reply",
+    reply: "Thank You So Much",
     message: "Yep, I can also do that",
     incoming: false,
     outgoing: true,

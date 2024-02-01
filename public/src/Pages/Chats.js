@@ -175,7 +175,7 @@ const Chats = () => {
                                 margin: '20px 0', // Add some margin for spacing
                             }} />
                         </Stack>
-                        <Stack direction={"column"} sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }} spacing={2}>
+                        <Stack direction={"column"} sx={{ flexGrow: 1, overflowY: "scroll", height: "100%" }} spacing={2}>
                             {/* <Stack spacing={2}> */}
 
                             {/* <SimpleBarStyle > */}

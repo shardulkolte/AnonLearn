@@ -4,6 +4,8 @@ import { useTheme } from "@mui/material/styles";
 import { Link, useSearchParams } from "react-router-dom";
 import Chats from "./Chats";
 import Conversation from "../Layouts/Conversation";
+import Sidebar from '../Layouts/Sidebar'
+
 
 
 
@@ -19,10 +21,10 @@ const GeneralApp = () => {
     <>
       {/* {chats} */}
       <Stack direction={'row'} sx={{ width: "100%" }}>
-
+        <Sidebar/>
         <Chats />
         <Box 
-        sx={{ height: "100%", 
+        sx={{ height: "100vh", 
         width: "calc(100vw - 420px)", 
         backgroundColor: "#949494" }}>
           {/* Conversation */}
