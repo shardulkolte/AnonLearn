@@ -1,7 +1,8 @@
 import React from 'react'
-import { Box, Divider, Link, Stack, Typography,IconButton } from '@mui/material'
+import { Box, Divider, Link, Stack, Typography,IconButton,Menu,MenuItem } from '@mui/material'
 import { blue } from '@mui/material/colors';
-import { DownloadSimple ,Image} from 'phosphor-react';
+import { DotsThreeVertical, DownloadSimple ,Image} from 'phosphor-react';
+import { Message_options } from '../Data/Icons';
 
 const DocMsg = ({ el}) => {
   return (
@@ -41,6 +42,7 @@ const DocMsg = ({ el}) => {
         </Stack>
       </Box>
       {/* {menu && <MessageOption />} */}
+      <MessageOption/>
     </Stack>
   );
 };
@@ -97,6 +99,7 @@ const LinkMsg = ({ el}) => {
         </Stack>
       </Box>
       {/* {menu && <MessageOption />} */}
+      <MessageOption/>
     </Stack>
   );
 };
@@ -138,6 +141,7 @@ const ReplyMsg = ({ el}) => {
         </Stack>
       </Box>
       {/* {menu && <MessageOption />} */}
+      <MessageOption/>
     </Stack>
   );
 };
@@ -169,6 +173,7 @@ const MediaMsg = ({ el}) => {
         </Stack>
       </Box>
       {/* {menu && <MessageOption />} */}
+      <MessageOption/>
     </Stack>
   );
 };
@@ -188,6 +193,7 @@ const TextMsg = ({el}) => {
           </Typography>
 
       </Box>
+      <MessageOption/>
 
     </Stack>
   )
@@ -218,5 +224,43 @@ const TimeLine = ({el}) => {
     </Stack>
   )
 }
+
+const MessageOption = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  return (
+    <>
+      <DotsThreeVertical
+        size={20}
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      />
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <Stack spacing={1} px={1}>
+          {Message_options.map((el) => (
+            <MenuItem onClick={handleClose}>{el.title}</MenuItem>
+          ))}
+        </Stack>
+      </Menu>
+    </>
+  );
+};
 
 export {TimeLine,TextMsg,MediaMsg,ReplyMsg,LinkMsg,DocMsg}
