@@ -1,8 +1,8 @@
 
 import './Home.css';
 import study from './study.png';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Navbar from '../pcomponents/Navbar';
+import Footer from '../pcomponents/Footer';
 
 const Home = () =>{
   return(

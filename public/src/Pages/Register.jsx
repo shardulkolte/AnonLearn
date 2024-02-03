@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import './Register.css';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Navbar from '../pcomponents/Navbar';
+import Footer from '../pcomponents/Footer';
 import logo from './logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";

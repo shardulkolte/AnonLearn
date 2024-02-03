@@ -2,8 +2,8 @@ import React from 'react'
 import './Aboutus.css';
 import au1 from './aboutus1.jpg';
 import au2 from './aboutus2.jpg';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../pcomponents/Navbar';
+import Footer from '../pcomponents/Footer';
 
 
 function Aboutus() {
