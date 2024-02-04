@@ -5,12 +5,15 @@ import { Link, useSearchParams } from "react-router-dom";
 import Chats from "../Layouts/Chats";
 import Conversation from "../Layouts/Conversation";
 import Sidebar from '../Layouts/Sidebar'
+import Contact from "../Layouts/Contact";
+import { useSelector } from "react-redux";
 
 
 
 
 
 const GeneralApp = () => {
+  const {sideBar} = useSelector((store)=>store.app);
 
   const theme = useTheme();
   const [searchParams] = useSearchParams();
@@ -26,13 +29,15 @@ const GeneralApp = () => {
         <Box
           sx={{
             height: "100vh",
-            width: "calc(100vw - 420px)",
+            width: sideBar.open ? "calc(100vw - 720px)": "calc(100vw - 400px)" ,
             backgroundColor: "#949494"
           }}>
           {/* Conversation */}
           <Conversation />
         </Box>
         {/* Contact */}
+        {sideBar.open && <Contact/>}
+        
       </Stack>
     </>
   );

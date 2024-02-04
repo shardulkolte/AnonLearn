@@ -29,6 +29,9 @@ import {
 import Message from './Message';
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
+import { dispatch } from '../redux/store';
+import { ToggleSidebar } from '../redux/slices/app';
+import { useDispatch } from 'react-redux';
 
 const Actions = [
     {
@@ -64,7 +67,7 @@ const Actions = [
 ];
 
 const ChatInput = ({ setOpenPicker }) => {
-    const [openActions,setOpenActions] = React.useState(false)
+    const [openActions, setOpenActions] = React.useState(false)
     return (
         <StyledInput
             fullWidth
@@ -73,30 +76,30 @@ const ChatInput = ({ setOpenPicker }) => {
             InputProps={{
                 disableUnderline: true,
                 startAdornment: (
-                    <Stack sx={{width:"max-content"}}>
-                        <Stack sx={{position:"relative",display:openActions ? "inline-block" : "none"}}>
-                            {Actions.map((el)=>(
+                    <Stack sx={{ width: "max-content" }}>
+                        <Stack sx={{ position: "relative", display: openActions ? "inline-block" : "none" }}>
+                            {Actions.map((el) => (
                                 <Tooltip placement="right" title={el.title}>
-                                <Fab
-                                  onClick={() => {
-                                    setOpenActions(!openActions);
-                                  }}
-                                  sx={{
-                                    position: "absolute",
-                                    top: -el.y,
-                                    backgroundColor: el.color,
-                                  }}
-                                  aria-label="add"
-                                >
-                                  {el.icon}
-                                </Fab>
-                              </Tooltip>
+                                    <Fab
+                                        onClick={() => {
+                                            setOpenActions(!openActions);
+                                        }}
+                                        sx={{
+                                            position: "absolute",
+                                            top: -el.y,
+                                            backgroundColor: el.color,
+                                        }}
+                                        aria-label="add"
+                                    >
+                                        {el.icon}
+                                    </Fab>
+                                </Tooltip>
                             ))}
                         </Stack>
                         <InputAdornment>
                             <IconButton onClick={() => {
-                        setOpenActions((prev) => !prev);
-                    }} >
+                                setOpenActions((prev) => !prev);
+                            }} >
                                 <LinkSimple color='black' />
                             </IconButton>
                         </InputAdornment>
@@ -153,6 +156,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Conversation = () => {
     const [openPicker, setOpenPicker] = React.useState(false);
+    const dispatch = useDispatch();
     return (
 
         <Stack height={"100%"} maxHeight={"100vh"} width={"auto"}>
@@ -172,7 +176,9 @@ const Conversation = () => {
                     direction={'row'}
                     justifyContent={'space-between'}
                     sx={{ width: "100%", height: "100%" }}>
-                    <Stack direction={'row'} spacing={2}>
+                    <Stack onClick={() => {
+                        dispatch(ToggleSidebar())
+                    }} direction={'row'} spacing={2}>
                         <Box>
                             <StyledBadge overlap="circular"
                                 anchorOrigin={{ vertical: "bottom", horizontal: "right" }}

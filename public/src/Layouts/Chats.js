@@ -142,7 +142,7 @@ const Chats = () => {
                     sx={{
                     position: "relative",
                     
-                    width: 380,
+                    width: 320,
                     backgroundColor:"#202020",
                     boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
                     
