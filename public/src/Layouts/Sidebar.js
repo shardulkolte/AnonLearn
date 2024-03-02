@@ -81,14 +81,14 @@ function Sidebar() {
               }} />
               {selected === 3 ?
                 <Box sx={{ backgroundColor: '#A6A6A6', borderRadius: 1.5 }}>
-                  <IconButton sx={{ width: 'max-content', color: '#fff' }}>
+                  <IconButton sx={{ width: 'max-content', color: '#fff' }}  >
                     <Gear />
                   </IconButton>
                 </Box>
                 : (<IconButton onClick={() => {
                   setSelected(3);
                 }} sx={{ width: 'max-content', color: '#000' }}>
-                  <Gear />
+                  <Gear onClick={() => window.location.href = '/settings'} />
                 </IconButton>
                 )}
             </Stack >

@@ -4,7 +4,7 @@ import { blue } from '@mui/material/colors';
 import { DotsThreeVertical, DownloadSimple ,Image} from 'phosphor-react';
 import { Message_options } from '../Data/Icons';
 
-const DocMsg = ({ el}) => {
+const DocMsg = ({ el,menu}) => {
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
       <Box
@@ -41,13 +41,13 @@ const DocMsg = ({ el}) => {
           </Typography>
         </Stack>
       </Box>
-      {/* {menu && <MessageOption />} */}
-      <MessageOption/>
+      {menu && <MessageOption />}
+      
     </Stack>
   );
 };
 
-const LinkMsg = ({ el}) => {
+const LinkMsg = ({ el,menu}) => {
 
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
@@ -74,7 +74,7 @@ const LinkMsg = ({ el}) => {
             <img
             src={el.preview}
             alt={el.message}
-            style={{ maxHeight: 210, borderRadius: "10px" }}
+            style={{ maxHeight: 175, borderRadius: "10px" }}
           />
             <Stack direction={"column"} spacing={2}>
               {/* <Embed
@@ -98,14 +98,14 @@ const LinkMsg = ({ el}) => {
           </Typography> */}
         </Stack>
       </Box>
-      {/* {menu && <MessageOption />} */}
-      <MessageOption/>
+      {menu && <MessageOption />}
+      
     </Stack>
   );
 };
 
 
-const ReplyMsg = ({ el}) => {
+const ReplyMsg = ({ el,menu}) => {
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
       <Box
@@ -140,13 +140,13 @@ const ReplyMsg = ({ el}) => {
           </Typography>
         </Stack>
       </Box>
-      {/* {menu && <MessageOption />} */}
-      <MessageOption/>
+      {menu && <MessageOption />}
+      
     </Stack>
   );
 };
 
-const MediaMsg = ({ el}) => {
+const MediaMsg = ({ el,menu}) => {
   return (
     <Stack direction="row" justifyContent={el.incoming ? "start" : "end"}>
       <Box
@@ -162,7 +162,7 @@ const MediaMsg = ({ el}) => {
           <img
             src={el.img}
             alt={el.message}
-            style={{ maxHeight: 210, borderRadius: "10px" }}
+            style={{ maxHeight: 175, borderRadius: "10px" }}
           />
           <Typography
             variant="body2"
@@ -172,14 +172,14 @@ const MediaMsg = ({ el}) => {
           </Typography>
         </Stack>
       </Box>
-      {/* {menu && <MessageOption />} */}
-      <MessageOption/>
+      {menu && <MessageOption />}
+      
     </Stack>
   );
 };
 
 
-const TextMsg = ({el}) => {
+const TextMsg = ({el,menu}) => {
   return (
     <Stack direction={'row'} justifyContent={el.incoming ? "start" : "end"}>
       <Box p={1.5}
@@ -193,7 +193,8 @@ const TextMsg = ({el}) => {
           </Typography>
 
       </Box>
-      <MessageOption/>
+      {menu && <MessageOption />}
+      
 
     </Stack>
   )

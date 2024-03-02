@@ -7,6 +7,8 @@ import Conversation from "../Layouts/Conversation";
 import Sidebar from '../Layouts/Sidebar'
 import Contact from "../Layouts/Contact";
 import { useSelector } from "react-redux";
+import SharedMessages from "../Layouts/SharedMessages";
+import StarredMessages from "../Layouts/StarredMessages";
 
 
 
@@ -36,7 +38,22 @@ const GeneralApp = () => {
           <Conversation />
         </Box>
         {/* Contact */}
-        {sideBar.open && <Contact/>}
+        {sideBar.open &&
+          (() => {
+            switch (sideBar.type) {
+              case "CONTACT":
+                return <Contact />;
+
+              case "STARRED":
+                return <StarredMessages/>;
+
+              case "SHARED":
+                return <SharedMessages/>;
+
+              default:
+                break;
+            }
+          })()}
         
       </Stack>
     </>

@@ -6,6 +6,8 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Aboutus from './Pages/Aboutus';
 import Dashboard from './Pages/Dashboard';
+import Settings from './Layouts/Settings';
+import Group from './Layouts/Group';
 
 
 const App = () => {
@@ -17,6 +19,10 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/group" element={<Group />} />
+
+
 
       </Routes>
     </Router>
