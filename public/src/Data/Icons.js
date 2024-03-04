@@ -12,14 +12,17 @@ import {
 
 const Profile_Menu = [
   {
+    
     title: "Profile",
     icon: <User />,
   },
   {
+    
     title: "Settings",
     icon: <Gear />,
   },
   {
+    
     title: "Log Out",
     icon: <SignOut />,
   },
@@ -28,11 +31,11 @@ const Profile_Menu = [
 const Nav_Buttons = [
   {
     index: 0,
-    icon: <Users />,
+    icon: <ChatCircleDots />,
   },
   {
     index: 1,
-    icon: <Archive />,
+    icon: <Users />,
   },
 ];
 

@@ -8,9 +8,10 @@ import Aboutus from './Pages/Aboutus';
 import Dashboard from './Pages/Dashboard';
 import Settings from './Layouts/Settings';
 import Group from './Layouts/Group';
-
+import Profile from './Layouts/Profile';
 
 const App = () => {
+  
  return (
   <Router>
       <Routes>
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/group" element={<Group />} />
+        <Route path="/profile" element={<Profile />} />
 
 
 

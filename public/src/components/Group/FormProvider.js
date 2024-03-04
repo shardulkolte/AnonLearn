@@ -13,7 +13,7 @@ FormProvider.propTypes = {
 export default function FormProvider({ children, onSubmit, methods }) {
   return (
     <Form {...methods}>
-      <form  onSubmit={onSubmit} style={{ backgroundColor: '#202020',padding:2,borderRadius:'0px' }}>{children}</form>
+      <form  onSubmit={onSubmit} style={{ backgroundColor: 'white',padding:2,borderRadius:'0px' }}>{children}</form>
     </Form>
   );
 }

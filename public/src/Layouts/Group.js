@@ -8,9 +8,14 @@ import { Search, SearchIconWrapper, StyledInputBase } from '../components/Search
 import { ChatList } from '../Data/Icons'
 import ChatElement from '../components/ChatElement'
 import CreateGroup from '../components/Group/CreateGroup'
+import { Navigate } from 'react-router-dom'
 
+
+// const isAuthenticated = false;
 
 function Group() {
+
+   
 
     const [openDialog, setOpenDialog] = useState(false);
 
@@ -21,6 +26,9 @@ function Group() {
         setOpenDialog(true);
     }
 
+    // if(!isAuthenticated){
+    //     return <Navigate to="/login" />;
+    //   }
 
     return (
         <>
@@ -63,7 +71,7 @@ function Group() {
                             direction={"row"}
                         >
                             <Typography variant="subtitle2" sx={{}} component={Link} >
-                                Create New Group
+                                Join a new group
                             </Typography>
                             <IconButton onClick={()=>{
                                 setOpenDialog(true);

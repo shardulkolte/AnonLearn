@@ -4,9 +4,12 @@ import Sidebar from './Sidebar'
 import { Avatar, Box, Divider, IconButton, Stack, Typography } from '@mui/material'
 import { Bell, CaretLeft, Image, Info, Key, Keyboard, Lock, Note, PencilCircle } from 'phosphor-react'
 import { faker } from '@faker-js/faker'
+import { Navigate } from 'react-router-dom'
 
 
 function Settings() {
+
+ 
 
   const [openTheme, setOpenTheme] = useState(false);
 
@@ -77,6 +80,8 @@ function Settings() {
       onclick: () => {},
     },
   ];
+
+ 
 
 
   return (

@@ -21,11 +21,10 @@ export default function RHFTextField({ name, helperText, ...other }) {
       control={control}
       render={({ field, fieldState: { error } }) => (
         <TextField
+        sx={{backgroundColor:'white',borderRadius:'10px'}}
           {...field}
           fullWidth
-          
-          
-          value={typeof field.value === 'number' && field.value === 0 ? '' : field.value}
+          value={typeof field.value === 'number' && field.value === 0 ? "" : field.value}
           error={!!error}
           helperText={error ? error?.message : helperText}
           {...other}

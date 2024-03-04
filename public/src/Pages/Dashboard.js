@@ -3,6 +3,8 @@ import React from 'react'
 import GeneralApp from './GeneralApp'
 import "./Dashboard.css";
 import { Avatar, Box, Divider, IconButton, Stack, Switch } from "@mui/material";
+import { Navigate ,Outlet} from 'react-router-dom';
+
 
 
 
@@ -10,6 +12,8 @@ import { Avatar, Box, Divider, IconButton, Stack, Switch } from "@mui/material";
 
 
 function Dashboard() {
+  
+  
   return (
     <>
 
@@ -17,6 +21,7 @@ function Dashboard() {
 
         {/* <Sidebar /> */}
         <GeneralApp />
+        <Outlet/>
 
       </Stack>
 

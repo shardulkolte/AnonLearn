@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Box, Divider, IconButton, Stack, Switch } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import Chats from "../Layouts/Chats";
 import Conversation from "../Layouts/Conversation";
 import Sidebar from '../Layouts/Sidebar'
@@ -14,15 +14,17 @@ import StarredMessages from "../Layouts/StarredMessages";
 
 
 
+
 const GeneralApp = () => {
   const {sideBar} = useSelector((store)=>store.app);
 
   const theme = useTheme();
   const [searchParams] = useSearchParams();
 
-
+ 
 
   return (
+    
     <>
       {/* {chats} */}
       <Stack direction={'row'} sx={{ width: "100%" }}>

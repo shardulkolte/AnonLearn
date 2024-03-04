@@ -116,11 +116,11 @@ export function UpdateSidebarType(type) {
     dispatch(slice.actions.updateSideBarType({ type }));
   };
 }
-// export function UpdateTab(tab) {
-//   return async (dispatch, getState) => {
-//     dispatch(slice.actions.updateTab(tab));
-//   };
-// }
+export function UpdateTab(tab) {
+  return async (dispatch, getState) => {
+    dispatch(slice.actions.updateTab(tab));
+  };
+}
 
 // export function FetchUsers() {
 //   return async (dispatch, getState) => {

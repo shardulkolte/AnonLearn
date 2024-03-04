@@ -3,7 +3,7 @@ import './Login.css';
 import Navbar from '../pcomponents/Navbar';
 import Footer from '../pcomponents/Footer';
 import logo from './logo.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -77,6 +77,7 @@ function Login() {
     setValues({...values,[event.target.name]:event.target.value });
   };
 
+ 
   return (
     <div className='page-container'> 
     <div className='backimg'>
