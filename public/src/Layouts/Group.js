@@ -34,7 +34,7 @@ function Group() {
         <>
             {/* {chats} */}
             <Stack direction={'row'} sx={{ width: "100%" }}>
-                <Sidebar />
+                {/* <Sidebar /> */}
                 {/* Left */}
                 <Box
                     sx={{

@@ -14,10 +14,10 @@ const getPath = (index) => {
       return "/dashboard";
 
     case 1:
-      return "/group";
+      return "/dashboard/group";
 
     case 2:
-      return "/settings";
+      return "/dashboard/settings";
 
     default:
       break;
@@ -176,10 +176,10 @@ function Sidebar() {
                      <Stack
                   onClick={() => {
                     if(idx === 0) {
-                      navigate("/profile");
+                      navigate("/dashboard/profile");
                     }
                     else if(idx === 1) {
-                      navigate("/settings");
+                      navigate("/dashboard/settings");
                     }
                     else {
                       navigate("/login");

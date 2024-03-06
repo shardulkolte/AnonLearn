@@ -88,7 +88,7 @@ function Settings() {
     <>
       {/* {chats} */}
       <Stack direction={'row'} sx={{ width: "100%" }}>
-        <Sidebar />
+        {/* <Sidebar /> */}
         {/* Left Pane */}
         <Box
           sx={{

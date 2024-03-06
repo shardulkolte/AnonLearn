@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard';
 import Settings from './Layouts/Settings';
 import Group from './Layouts/Group';
 import Profile from './Layouts/Profile';
+import GeneralApp from './Pages/GeneralApp';
 
 const App = () => {
   
@@ -19,10 +20,13 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/group" element={<Group />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/dashboard" element={<Dashboard />} >
+          <Route index element={<GeneralApp/>} />
+          <Route path="/dashboard/settings" element={<Settings />} />
+          <Route path="/dashboard/group" element={<Group />} />
+          <Route path="/dashboard/profile" element={<Profile />} />
+        </Route>
+        
 
 
 
