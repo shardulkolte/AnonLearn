@@ -26,8 +26,10 @@ import { Link as RouterLink } from "react-router-dom";
 import FormProvider from "../components/hook-form/FormProvider";
 import RHFTextField from "../components/hook-form/RHFTextField";
 import { Eye, EyeSlash } from "phosphor-react";
+import { RegisterUser } from "../redux/slices/auth";
 
 export default function RegisterForm() {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const RegisterSchema = Yup.object().shape({
@@ -53,14 +55,14 @@ export default function RegisterForm() {
     reset,
     setError,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors },
   } = methods;
 
   const onSubmit = async (data) => {
     try {
       // console.log(data);
       // submit data to backend
-      // dispatch(LoginUser(data));
+      dispatch(RegisterUser(data));
     } catch (error) {
       console.error(error);
       reset();

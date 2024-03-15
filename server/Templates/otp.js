@@ -135,7 +135,7 @@ module.exports = (name, otp) => {
                                   <tr>
                                     <td style="padding-right: 0px;padding-left: 0px;" align="center">
                                       <a href="https://sateeq.com" target="_blank">
-                                        <img align="center" border="0" src="https://assets.unlayer.com/projects/47137/1675000768671-logo.ico" alt="Sateeq Logo" title="Sateeq Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 19%;max-width: 106.4px;"
+                                        <img align="center" border="0" src="https://assets.unlayer.com/projects/0/1710504622315-9058.png" alt="Sateeq Logo" title="Sateeq Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 19%;max-width: 106.4px;"
                                           width="106.4" />
                                       </a>
                                     </td>

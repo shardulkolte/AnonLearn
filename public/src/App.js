@@ -13,6 +13,7 @@ import GeneralApp from "./Pages/GeneralApp";
 import MainLayout from "./Layouts/MainLayout";
 import ResetPassword from "./Pages/ResetPassword";
 import NewPassword from "./Pages/NewPassword";
+import Verify from "./Pages/Verify";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/reset-password" element={<ResetPassword />} />
           <Route path="/auth/new-password" element={<NewPassword />} />
+          <Route path="/auth/verify" element={<Verify />} />
         </Route>
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/dashboard" element={<Dashboard />}>
