@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import axios from "../../utils/axios";
+import axios from "../../utils/axios";
 // import S3 from "../../utils/s3";
 // import {v4} from 'uuid';
 // import S3 from "../../utils/s3";
@@ -12,20 +12,20 @@ const initialState = {
     open: false,
     type: "CONTACT", // can be CONTACT, STARRED, SHARED
   },
-//   isLoggedIn: true,
-//   tab: 0, // [0, 1, 2, 3]
-//   snackbar: {
-//     open: null,
-//     severity: null,
-//     message: null,
-//   },
-//   users: [], // all users of app who are not friends and not requested yet
-//   all_users: [],
-//   friends: [], // all friends
-//   friendRequests: [], // all friend requests
-//   chat_type: null,
-//   room_id: null,
-//   call_logs: [],
+  //   isLoggedIn: true,
+  //   tab: 0, // [0, 1, 2, 3]
+  //   snackbar: {
+  //     open: null,
+  //     severity: null,
+  //     message: null,
+  //   },
+  //   users: [], // all users of app who are not friends and not requested yet
+  //   all_users: [],
+  //   friends: [], // all friends
+  //   friendRequests: [], // all friend requests
+  //   chat_type: null,
+  //   room_id: null,
+  //   call_logs: [],
 };
 
 const slice = createSlice({
@@ -42,7 +42,7 @@ const slice = createSlice({
     //   state.user = action.payload.user;
     // },
     // Toggle Sidebar
-    toggleSideBar(state,action) {
+    toggleSideBar(state, action) {
       state.sideBar.open = !state.sideBar.open;
     },
     updateSideBarType(state, action) {
@@ -113,14 +113,18 @@ export function ToggleSidebar() {
 }
 export function UpdateSidebarType(type) {
   return async (dispatch, getState) => {
-    dispatch(slice.actions.updateSideBarType({ type }));
+    dispatch(
+      slice.actions.updateSideBarType({
+        type,
+      })
+    );
   };
 }
-export function UpdateTab(tab) {
-  return async (dispatch, getState) => {
-    dispatch(slice.actions.updateTab(tab));
-  };
-}
+// export function UpdateTab(tab) {
+//   return async (dispatch, getState) => {
+//     dispatch(slice.actions.updateTab(tab));
+//   };
+// }
 
 // export function FetchUsers() {
 //   return async (dispatch, getState) => {
@@ -268,9 +272,9 @@ export function UpdateTab(tab) {
 //         async (_err, presignedURL) => {
 //           await fetch(presignedURL, {
 //             method: "PUT",
-  
+
 //             body: file,
-  
+
 //             headers: {
 //               "Content-Type": file.type,
 //             },
@@ -281,8 +285,6 @@ export function UpdateTab(tab) {
 //     catch(error) {
 //       console.log(error);
 //     }
-
-    
 
 //     axios
 //       .patch(

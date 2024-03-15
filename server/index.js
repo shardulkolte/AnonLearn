@@ -1,19 +1,19 @@
-const app = require("./app");
-const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const userRoutes = require("./routes/userRoutes");
-dotenv.config({ path: "./.env" });
+const routes = require("./routes/auth");
 
 process.on("uncaughtException", (err) => {
   console.log(err);
   console.log("UNCAUGHT Exception! Shutting down ...");
   process.exit(1);
 });
+const app = require("./app");
 
 const http = require("http");
 const server = http.createServer(app);
 
-app.use("/api/auth", userRoutes);
+app.use(routes);
+
 //mongo atlas database---------------------------------------------------
 
 mongoose

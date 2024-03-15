@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const userRoutes = require("./routes/userRoutes");
+// const auth = require("./routes/auth");
+const routes = require("./routes/index");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
@@ -42,7 +43,7 @@ const limiter = rateLimit({
   message: "Too many Requests from this IP, please try again in an hour!",
 });
 
-app.use("/tawk", limiter);
+app.use("/anonlearn", limiter);
 
 app.use(
   express.urlencoded({
@@ -54,22 +55,6 @@ app.use(mongosanitize());
 
 // app.use(xss());
 
-app.use("/api/auth", userRoutes);
-
-//mongocompass database---------------------------------------------
-
-// mongoose
-//   .connect(process.env.MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log("MongoDB Connected Successfully to compass");
-//   })
-//   .catch((err) => {
-//     console.log(err.message);
-//   });
-
-//----------------------------------------------------------------------
+app.use(routes);
 
 module.exports = app;

@@ -3,8 +3,9 @@ import axios from "axios";
 // import { BASE_URL } from '../config';
 
 // ----------------------------------------------------------------------
+const BASE_URL = "http://localhost:3001";
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:3000" });
+const axiosInstance = axios.create({ baseURL: "http://localhost:3001" });
 
 axiosInstance.interceptors.response.use(
   (response) => response,

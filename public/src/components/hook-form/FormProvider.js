@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // form
-import { FormProvider as Form } from 'react-hook-form';
+import { FormProvider as Form } from "react-hook-form";
 
 // ----------------------------------------------------------------------
 
@@ -13,7 +13,12 @@ FormProvider.propTypes = {
 export default function FormProvider({ children, onSubmit, methods }) {
   return (
     <Form {...methods}>
-      <form  onSubmit={onSubmit} style={{ backgroundColor: '#202020',padding:2,borderRadius:'0px' }}>{children}</form>
+      <form
+        onSubmit={onSubmit}
+        style={{ backgroundColor: "black", padding: 2, borderRadius: "0px" }}
+      >
+        {children}
+      </form>
     </Form>
   );
 }
