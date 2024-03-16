@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "../../utils/axios";
+import { showSnackbar } from "./app";
 
 const initialState = {
   isLoggedIn: false,
@@ -95,16 +96,16 @@ export function ForgotPassword(formValues) {
       .then(function (response) {
         console.log(response);
 
-        // dispatch(
-        //   showSnackbar({ severity: "success", message: response.data.message })
-        // );
+        dispatch(
+          showSnackbar({ severity: "success", message: response.data.message })
+        );
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: false })
         // );
       })
       .catch(function (error) {
         console.log(error);
-        // dispatch(showSnackbar({ severity: "error", message: error.message }));
+        dispatch(showSnackbar({ severity: "error", message: error.message }));
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: true })
         // );
@@ -139,16 +140,16 @@ export function LoginUser(formValues) {
           })
         );
         // window.localStorage.setItem("user_id", response.data.user_id);
-        // dispatch(
-        //   showSnackbar({ severity: "success", message: response.data.message })
-        // );
+        dispatch(
+          showSnackbar({ severity: "success", message: response.data.message })
+        );
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: false })
         // );
       })
       .catch(function (error) {
         console.log(error);
-        // dispatch(showSnackbar({ severity: "error", message: error.message }));
+        dispatch(showSnackbar({ severity: "error", message: error.message }));
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: true })
         // );
@@ -185,16 +186,16 @@ export function RegisterUser(formValues) {
           slice.actions.updateRegisterEmail({ email: formValues.email })
         );
 
-        // dispatch(
-        //   showSnackbar({ severity: "success", message: response.data.message })
-        // );
+        dispatch(
+          showSnackbar({ severity: "success", message: response.data.message })
+        );
         dispatch(
           slice.actions.updateIsLoading({ isLoading: false, error: false })
         );
       })
       .catch(function (error) {
         console.log(error);
-        // dispatch(showSnackbar({ severity: "error", message: error.message }));
+        dispatch(showSnackbar({ severity: "error", message: error.message }));
         dispatch(
           slice.actions.updateIsLoading({ error: true, isLoading: false })
         );
