@@ -7,41 +7,38 @@ import {
   SignOut,
   User,
   Users,
-  Archive
+  Archive,
 } from "phosphor-react";
 
 const Profile_Menu = [
   {
-    
     title: "Profile",
     icon: <User />,
   },
   {
-    
     title: "Settings",
     icon: <Gear />,
   },
   {
-    
     title: "Log Out",
     icon: <SignOut />,
   },
 ];
 
 const Nav_Buttons = [
+  // {
+  //   index: 0,
+  //   icon: <ChatCircleDots />,
+  // },
   {
     index: 0,
-    icon: <ChatCircleDots />,
-  },
-  {
-    index: 1,
     icon: <Users />,
   },
 ];
 
 const Nav_Setting = [
   {
-    index: 2,
+    index: 1,
     icon: <GearSix />,
   },
 ];

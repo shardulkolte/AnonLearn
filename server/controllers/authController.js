@@ -80,13 +80,13 @@ exports.sendOTP = async (req, res, next) => {
   console.log(new_otp);
 
   // TODO send mail
-  // mailService.sendEmail({
-  //   from: "anonlearneducation@gmail.com",
-  //   to: user.email,
-  //   subject: "Verification OTP",
-  //   html: otp(user.username, new_otp),
-  //   attachments: [],
-  // });
+  mailService.sendEmail({
+    from: "anonlearneducation@gmail.com",
+    to: user.email,
+    subject: "Verification OTP",
+    html: otp(user.username, new_otp),
+    attachments: [],
+  });
 
   res.status(200).json({
     status: "success",

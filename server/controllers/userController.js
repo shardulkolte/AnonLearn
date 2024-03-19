@@ -37,7 +37,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 exports.getUsers = catchAsync(async (req, res, next) => {
   const all_users = await User.find({
     verified: true,
-  }).select("firstName lastName _id");
+  }).select("username _id");
 
   const this_user = req.user;
 
@@ -73,7 +73,7 @@ exports.getAllVerifiedUsers = catchAsync(async (req, res, next) => {
 exports.getRequests = catchAsync(async (req, res, next) => {
   const requests = await FriendRequest.find({ recipient: req.user._id })
     .populate("sender")
-    .select("_id firstName lastName");
+    .select("_id username");
 
   res.status(200).json({
     status: "success",
@@ -85,7 +85,7 @@ exports.getRequests = catchAsync(async (req, res, next) => {
 exports.getFriends = catchAsync(async (req, res, next) => {
   const this_user = await User.findById(req.user._id).populate(
     "friends",
-    "_id firstName lastName"
+    "_id username"
   );
   res.status(200).json({
     status: "success",

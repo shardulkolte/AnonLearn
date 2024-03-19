@@ -21,12 +21,9 @@ import { LogoutUser } from "../redux/slices/auth";
 const getPath = (index) => {
   switch (index) {
     case 0:
-      return "/dashboard";
-
-    case 1:
       return "/dashboard/group";
 
-    case 2:
+    case 1:
       return "/dashboard/settings";
 
     default:
@@ -126,7 +123,7 @@ function Sidebar() {
                   margin: "20px 0", // Add some margin for spacing
                 }}
               />
-              {selected === 2 ? (
+              {selected === 1 ? (
                 <Box
                   sx={{
                     backgroundColor: "#A6A6A6",
@@ -140,8 +137,8 @@ function Sidebar() {
               ) : (
                 <IconButton
                   onClick={() => {
-                    navigate(getPath(2));
-                    setSelected(2);
+                    navigate(getPath(1));
+                    setSelected(1);
                   }}
                   sx={{
                     width: "max-content",
