@@ -8,17 +8,19 @@ import {
   User,
   Users,
   Archive,
+  UserCircle,
+  UserPlus,
 } from "phosphor-react";
 
 const Profile_Menu = [
-  {
-    title: "Profile",
-    icon: <User />,
-  },
-  {
-    title: "Settings",
-    icon: <Gear />,
-  },
+  // {
+  //   title: "Profile",
+  //   icon: <User />,
+  // },
+  // {
+  //   title: "Settings",
+  //   icon: <Gear />,
+  // },
   {
     title: "Log Out",
     icon: <SignOut />,
@@ -26,19 +28,23 @@ const Profile_Menu = [
 ];
 
 const Nav_Buttons = [
-  // {
-  //   index: 0,
-  //   icon: <ChatCircleDots />,
-  // },
   {
     index: 0,
+    icon: <UserCircle />,
+  },
+  {
+    index: 1,
     icon: <Users />,
+  },
+  {
+    index: 2,
+    icon: <UserPlus />,
   },
 ];
 
 const Nav_Setting = [
   {
-    index: 1,
+    index: 3,
     icon: <GearSix />,
   },
 ];

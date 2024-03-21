@@ -2,6 +2,7 @@ import { Avatar, Badge, Box, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { SelectConversation } from "../redux/slices/app";
+import { useNavigate } from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -36,18 +37,24 @@ const truncateText = (string, n) => {
   return string?.length > n ? `${string?.slice(0, n)}...` : string;
 };
 
-const ChatElement = ({ id, img, name, msg, time, unread, online }) => {
+const ChatElement = ({ id, img, name, msg, time, unread, online, props }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <Box
       onClick={() => {
-        dispatch(SelectConversation({ room_id: id }));
+        navigate("/dashboard/group");
       }}
       sx={{
         width: "95%",
         height: 60,
         borderRadius: 1,
         backgroundColor: "#404040",
+        transition: "background-color 0.3s",
+        "&:hover": {
+          backgroundColor: "#555555",
+          cursor: "pointer", // Add pointer cursor on hover
+        },
       }}
       p={1.2}
     >
@@ -57,28 +64,29 @@ const ChatElement = ({ id, img, name, msg, time, unread, online }) => {
         justifyContent="space-between"
       >
         <Stack direction="row" spacing={2}>
-          {" "}
           {online ? (
             <StyledBadge
               overlap="circular"
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               variant="dot"
             >
-              <Avatar alt={name} src={img} />
+              <Avatar>{props.name[0]}</Avatar>
             </StyledBadge>
           ) : (
-            <Avatar alt={name} src={img} />
+            <Avatar>{props.name[0]}</Avatar>
           )}
           <Stack spacing={0.3}>
             <Typography color={"white"} variant="subtitle2">
-              {name}
+              {props.name}
             </Typography>
-            <Typography variant="caption">{truncateText(msg, 10)}</Typography>
+            <Typography variant="caption">
+              {truncateText(props.lastMessage, 10)}
+            </Typography>
           </Stack>
         </Stack>
         <Stack spacing={1} alignItems={"center"}>
           <Typography sx={{ fontWeight: 600 }} variant="caption">
-            {time}
+            {props.timeStamp}
           </Typography>
           <Badge
             className="unread-count"

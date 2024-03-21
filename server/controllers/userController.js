@@ -35,23 +35,19 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 });
 
 exports.getUsers = catchAsync(async (req, res, next) => {
-  const all_users = await User.find({
-    verified: true,
-  }).select("username _id");
+  const keyword = req.query.search
+    ? {
+        $or: [
+          { username: { $regex: req.query.search, $options: "i" } },
+          { email: { $regex: req.query.search, $options: "i" } },
+        ],
+      }
+    : {};
 
-  const this_user = req.user;
-
-  const remaining_users = all_users.filter(
-    (user) =>
-      !this_user.friends.includes(user._id) &&
-      user._id.toString() !== req.user._id.toString()
-  );
-
-  res.status(200).json({
-    status: "success",
-    data: remaining_users,
-    message: "Users found successfully!",
+  const users = await User.find(keyword).find({
+    _id: { $ne: req.user._id },
   });
+  res.send(users);
 });
 
 exports.getAllVerifiedUsers = catchAsync(async (req, res, next) => {

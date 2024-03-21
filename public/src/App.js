@@ -18,6 +18,9 @@ import { Snackbar } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSnackBar } from "./redux/slices/app";
+import User_groups from "./Layouts/Users_group";
+import Users from "./Pages/Users";
+import Availablegroups from "./Pages/Availablegroups";
 
 const vertical = "bottom";
 const horizontal = "center";
@@ -46,9 +49,12 @@ const App = () => {
           <Route path="/aboutus" element={<Aboutus />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<GeneralApp />} />
-            <Route path="/dashboard/settings" element={<Settings />} />
+            <Route path="/dashboard/users" element={<Users />} />
             <Route path="/dashboard/group" element={<Group />} />
-            <Route path="/dashboard/profile" element={<Profile />} />
+            <Route
+              path="/dashboard/availablegroups"
+              element={<Availablegroups />}
+            />
           </Route>
         </Routes>
       </Router>

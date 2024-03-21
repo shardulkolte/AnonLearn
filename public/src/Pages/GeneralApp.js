@@ -33,7 +33,7 @@ const GeneralApp = () => {
       {/* {chats} */}
       <Stack direction={"row"} sx={{ width: "100%" }}>
         {/* <Sidebar /> */}
-        <Group />
+        <Chats />
         {/* <Box sx={{
           height:"100vh",
           width: "calc(100vw-80px)"

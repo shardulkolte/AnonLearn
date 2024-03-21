@@ -1,32 +1,36 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
-
 const otpGenerator = require("otp-generator");
 mailService = require("../services/mailer");
 const crypto = require("crypto");
-
 const filterObj = require("../utils/filterObj");
-
 // Model
 const otp = require("../Templates/otp");
 const resetPassword = require("../Templates/resetPassword");
 const { promisify } = require("util");
 const catchAsync = require("../utils/catchAsync");
-
 // this function will return you jwt token
-const signToken = (userId) => jwt.sign({ userId }, process.env.JWT_SECRET);
+const signToken = (userId) =>
+  jwt.sign({ userId }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
 
 // Register New User start
-
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
-
   const filteredBody = filterObj(req.body, "username", "email", "password");
 
-  // check if a verified user with given email exists
+  //username already taken...........................................................
+  const usernameExist = await User.findOne({ username });
+  if (usernameExist) {
+    return res.status(400).json({
+      status: "error",
+      message: "Username already used, please try another one.",
+    });
+  }
 
+  // check if a verified user with given email exists........................................
   const existing_user = await User.findOne({ email: email });
-
   if (existing_user && existing_user.verified) {
     //changed the code -----&& existing_user.verified
     // user with this email already exists, Please login
@@ -36,19 +40,16 @@ exports.register = async (req, res, next) => {
     });
   } else if (existing_user) {
     // if not verified than update prev one
-
     await User.findOneAndUpdate({ email: email }, filteredBody, {
       new: true,
       validateModifiedOnly: true,
     });
-
     // generate an otp and send to email
     req.userId = existing_user._id;
     next();
   } else {
     // if user is not created before than create a new one
     const new_user = await User.create(filteredBody);
-
     // generate an otp and send to email
     req.userId = new_user._id;
     next();
@@ -80,17 +81,18 @@ exports.sendOTP = async (req, res, next) => {
   console.log(new_otp);
 
   // TODO send mail
-  mailService.sendEmail({
-    from: "anonlearneducation@gmail.com",
-    to: user.email,
-    subject: "Verification OTP",
-    html: otp(user.username, new_otp),
-    attachments: [],
-  });
+  // mailService.sendEmail({
+  //   from: "anonlearneducation@gmail.com",
+  //   to: user.email,
+  //   subject: "Verification OTP",
+  //   html: otp(user.username, new_otp),
+  //   attachments: [],
+  // });
 
   res.status(200).json({
     status: "success",
     message: "OTP Sent Successfully!",
+    token: signToken(user._id),
   });
 };
 
@@ -138,6 +140,9 @@ exports.verifyOTP = async (req, res, next) => {
     message: "OTP verified Successfully!",
     token,
     user_id: user._id,
+    username: user.username,
+    email: user.email,
+    isAdmin: user.isAdmin,
   });
 };
 
@@ -182,6 +187,9 @@ exports.login = async (req, res, next) => {
     message: "Logged in successfully!",
     token,
     user_id: user._id,
+    username: user.username,
+    email: user.email,
+    isAdmin: user.isAdmin,
   });
 };
 

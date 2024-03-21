@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
 
 import {
   Avatar,
@@ -34,17 +33,17 @@ import { ChatList } from "../Data/Icons";
 import ChatElement from "../components/ChatElement";
 import CreateGroup from "../components/Group/CreateGroup";
 import { Navigate } from "react-router-dom";
-import Conversation from "./Conversation";
+
 import NoChatSVG from "../assets/Illustration/NoChat";
 import { useSelector } from "react-redux";
 import Contact from "../Layouts/Contact";
 import SharedMessages from "../Layouts/SharedMessages";
 import StarredMessages from "../Layouts/StarredMessages";
-import User_groups from "./Users_group";
+import Group_list from "../Layouts/Group_list";
 
 // const isAuthenticated = false;
 
-function Group() {
+function Availablegroups() {
   const [openDialog, setOpenDialog] = useState(false);
 
   const { sideBar, chat_type, room_id } = useSelector((store) => store.app);
@@ -86,6 +85,7 @@ function Group() {
       <Stack direction={"row"} sx={{ width: "100%" }}>
         {/* <Sidebar /> */}
         {/* Left */}
+        {/*  */}
 
         <Box
           sx={{
@@ -95,10 +95,10 @@ function Group() {
           }}
         >
           {/* Conversation */}
-          {chatconversations.map((conv) => {
+          {/* {chatconversations.map((conv) => {
             return <Conversation props={conv} />;
-          })}
-          {/* <User_groups /> */}
+          })} */}
+          <Group_list />
         </Box>
       </Stack>
       {openDialog && (
@@ -108,4 +108,4 @@ function Group() {
   );
 }
 
-export default Group;
+export default Availablegroups;

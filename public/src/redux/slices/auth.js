@@ -117,7 +117,7 @@ export function LoginUser(formValues) {
   return async (dispatch, getState) => {
     // Make API call here
 
-    // dispatch(slice.actions.updateIsLoading({ isLoading: true, error: false }));
+    dispatch(slice.actions.updateIsLoading({ isLoading: true, error: false }));
 
     await axios
       .post(
@@ -139,13 +139,15 @@ export function LoginUser(formValues) {
             token: response.data.token,
           })
         );
-        window.localStorage.setItem("user_id", response.data.user_id);
+        localStorage.setItem("userData", JSON.stringify(response));
+        // window.localStorage.setItem("token", response.data.token);
+
         dispatch(
           showSnackbar({ severity: "success", message: response.data.message })
         );
-        // dispatch(
-        //   slice.actions.updateIsLoading({ isLoading: false, error: false })
-        // );
+        dispatch(
+          slice.actions.updateIsLoading({ isLoading: false, error: false })
+        );
       })
       .catch(function (error) {
         console.log(error);
@@ -227,7 +229,7 @@ export function VerifyEmail(formValues) {
       .then(function (response) {
         console.log(response);
         // dispatch(slice.actions.updateRegisterEmail({ email: "" }));
-        window.localStorage.setItem("user_id", response.data.user_id);
+        localStorage.setItem("userData", JSON.stringify(response));
         dispatch(
           slice.actions.logIn({
             isLoggedIn: true,
