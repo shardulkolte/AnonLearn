@@ -38,11 +38,11 @@ const truncateText = (string, n) => {
 
 const Messageself = ({ id, img, name, msg, time, unread, online, props }) => {
   const dispatch = useDispatch();
-  var props2 = {
-    name: "You",
-    message: "This is a sample message so just be with it ",
-    timeStamp: "11.12am",
-  };
+  // var props2 = {
+  //   name: "You",
+  //   message: "This is a sample message so just be with it ",
+  //   timeStamp: "11.12am",
+  // };
   return (
     <Stack direction={"row"} justifyContent={"end"} spacing={1} p={1}>
       <Box
@@ -55,14 +55,14 @@ const Messageself = ({ id, img, name, msg, time, unread, online, props }) => {
       >
         <Stack spacing={0.1}>
           <Typography variant="subtitle2" color={"white"}>
-            {props2.message}
+            {props.content}
           </Typography>
         </Stack>
-        <Stack spacing={0.1} alignItems={"end"}>
+        {/* <Stack spacing={0.1} alignItems={"end"}>
           <Typography sx={{ fontWeight: 600 }} variant="caption">
             {props2.timeStamp}
           </Typography>
-        </Stack>
+        </Stack> */}
       </Box>
     </Stack>
   );

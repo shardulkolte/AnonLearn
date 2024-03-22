@@ -2,6 +2,7 @@ import { Avatar, Badge, Box, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { SelectConversation } from "../redux/slices/app";
+import { faker } from "@faker-js/faker";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -38,14 +39,14 @@ const truncateText = (string, n) => {
 
 const MessageOthers = ({ id, img, name, msg, time, unread, online, props }) => {
   const dispatch = useDispatch();
-  var props1 = {
-    name: "Random User",
-    message: "This is a sample message so just be with it ",
-    timeStamp: "11.12am",
-  };
+  // var props1 = {
+  //   name: "Random User",
+  //   message: "This is a sample message so just be with it ",
+  //   timeStamp: "11.12am",
+  // };
   return (
     <Stack direction={"row"} justifyContent={"start"} spacing={1} p={1}>
-      <Avatar>{props1.name[0]}</Avatar>
+      <Avatar src={faker.image.avatar()}></Avatar>
       <Box
         p={1}
         sx={{
@@ -56,17 +57,17 @@ const MessageOthers = ({ id, img, name, msg, time, unread, online, props }) => {
       >
         <Stack spacing={0.1}>
           <Typography color={"black"} variant="subtitle2">
-            {props1.name}
+            {props.sender.username}
           </Typography>
           <Typography variant="subtitle2" color={"white"}>
-            {props1.message}
+            {props.content}
           </Typography>
         </Stack>
-        <Stack spacing={0.1} alignItems={"end"}>
+        {/* <Stack spacing={0.1} alignItems={"end"}>
           <Typography sx={{ fontWeight: 600 }} variant="caption">
             {props1.timeStamp}
           </Typography>
-        </Stack>
+        </Stack> */}
       </Box>
     </Stack>
 

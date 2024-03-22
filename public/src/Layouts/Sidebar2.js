@@ -275,7 +275,10 @@ function Sidebar2() {
                                 {chatName}
                               </Typography>
                               <Typography variant="caption">
-                                {conversation.latestMessage.content}
+                                {truncateText(
+                                  conversation.latestMessage.content,
+                                  20
+                                )}
                               </Typography>
                             </Stack>
                           </Stack>
