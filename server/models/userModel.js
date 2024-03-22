@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
   password: {
     // unselect
     type: String,
+    requried: true,
   },
   passwordConfirm: {
     // unselect
@@ -73,10 +74,6 @@ const userSchema = new mongoose.Schema({
   ],
   socket_id: {
     type: String,
-  },
-  status: {
-    type: String,
-    enum: ["Online", "Offline"],
   },
 });
 
@@ -149,4 +146,6 @@ userSchema.methods.createPasswordResetToken = function () {
   return resetToken;
 };
 
-module.exports = mongoose.model("Users", userSchema);
+module.exports = mongoose.model("User", userSchema);
+
+//changed Users to User

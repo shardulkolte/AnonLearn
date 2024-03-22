@@ -5,13 +5,14 @@ import { styled } from "@mui/material/styles";
 
 import CreateGroup from "../components/Group/CreateGroup";
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import User_groups from "../Layouts/Users_group";
 import axios from "axios";
 import { myContext } from "./Dashboard";
 import lo from "../Pages/logo.png";
 import Onlineuserlist from "../components/onlineuserlist";
 import { faker } from "@faker-js/faker";
+import { refreshSidebarFun } from "../redux/slices/refreshSidebar";
 
 // const isAuthenticated = false;
 
@@ -41,9 +42,7 @@ const StyledInput = styled(TextField)(({ theme }) => ({
 function Users() {
   const [openDialog, setOpenDialog] = useState(false);
   const [openPicker, setOpenPicker] = React.useState(false);
-
   const { sideBar, chat_type, room_id } = useSelector((store) => store.app);
-
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
@@ -52,7 +51,7 @@ function Users() {
   };
 
   const { refresh, setRefresh } = useContext(myContext);
-
+  const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const userData = JSON.parse(localStorage.getItem("userData"));
 
@@ -133,7 +132,7 @@ function Users() {
                     </Box>
                     <Stack spacing={0.2}>
                       <Typography variant="h5" color={"white"}>
-                        Online Users
+                        Available Users
                       </Typography>
                     </Stack>
                   </Stack>
@@ -170,7 +169,22 @@ function Users() {
                         whileHover={{ scale: 1.01 }} // Scale effect on hover
                         whileTap={{ scale: 0.97 }} // Scale effect on click
                         key={index}
-                        onClick={() => {}}
+                        onClick={() => {
+                          console.log("Creating chat with ", user.username);
+                          const config = {
+                            headers: {
+                              Authorization: `Bearer ${userData.data.token}`,
+                            },
+                          };
+                          axios.post(
+                            "http://localhost:3001/chat/",
+                            {
+                              userId: user._id,
+                            },
+                            config
+                          );
+                          dispatch(refreshSidebarFun());
+                        }}
                       >
                         <Box
                           sx={{

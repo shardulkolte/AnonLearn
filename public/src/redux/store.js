@@ -5,6 +5,7 @@ import {
 } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { rootPersistConfig, rootReducer } from "./rootReducer";
+import refreshSidebar from "./slices/refreshSidebar";
 
 const store = configureStore({
   reducer: persistReducer(rootPersistConfig, rootReducer),

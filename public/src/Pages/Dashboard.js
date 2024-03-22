@@ -35,6 +35,7 @@ function Dashboard() {
           <Sidebar />
           <Sidebar2 />
           <Main />
+          {/* <Outlet /> */}
         </myContext.Provider>
       </Stack>
     </>

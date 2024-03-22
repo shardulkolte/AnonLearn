@@ -11,7 +11,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { Link, Navigate, Outlet, useSearchParams } from "react-router-dom";
 import Chats from "../Layouts/Chats";
-import Conversation from "../Layouts/Conversation";
+import Conversation from "../Layouts/ChatArea";
 import Sidebar from "../Layouts/Sidebar";
 import { useSelector } from "react-redux";
 import Contact from "../Layouts/Contact";
@@ -20,7 +20,7 @@ import StarredMessages from "../Layouts/StarredMessages";
 import Main from "../Layouts/main";
 
 import NoChatSVG from "../assets/Illustration/NoChat";
-import Group from "../Layouts/Group";
+import Group from "../Layouts/Conversation";
 
 const GeneralApp = () => {
   const { sideBar, chat_type, room_id } = useSelector((store) => store.app);

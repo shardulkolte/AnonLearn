@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
+import { motion } from "framer-motion";
 
 import {
   Avatar,
@@ -34,45 +35,72 @@ import { ChatList } from "../Data/Icons";
 import ChatElement from "../components/ChatElement";
 import CreateGroup from "../components/Group/CreateGroup";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { myContext } from "../Pages/Dashboard";
+import axios from "axios";
 
 // const isAuthenticated = false;
+const truncateText = (string, n) => {
+  return string?.length > n ? `${string?.slice(0, n)}...` : string;
+};
 
 function Sidebar2() {
   const [openDialog, setOpenDialog] = useState(false);
-
   const { sideBar, chat_type, room_id } = useSelector((store) => store.app);
-
+  const navigate = useNavigate();
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
-  const [chatconversations, setchatConversations] = useState([
-    {
-      name: "Test#1",
-      lastMessage: "Last Message #1",
-      timeStamp: "today",
-    },
-  ]);
-  const [conversations, setConversations] = useState([
-    {
-      name: "Test#1",
-      lastMessage: "Last Message #1",
-      timeStamp: "today",
-    },
-    {
-      name: "Test#2",
-      lastMessage: "Last Message #2",
-      timeStamp: "today",
-    },
-    {
-      name: "Test#3",
-      lastMessage: "Last Message #3",
-      timeStamp: "today",
-    },
-  ]);
+  // const [conversations, setConversations] = useState([
+  //   {
+  //     name: "Test#1",
+  //     lastMessage: "Last Message #1",
+  //     timeStamp: "today",
+  //   },
+  //   {
+  //     name: "Test#2",
+  //     lastMessage: "Last Message #2",
+  //     timeStamp: "today",
+  //   },
+  //   {
+  //     name: "Test#3",
+  //     lastMessage: "Last Message #3",
+  //     timeStamp: "today",
+  //   },
+  // ]);
+
+  const dispatch = useDispatch();
+  // const refresh = useSelector((state) => state.refreshKey);
+  const { refresh, setRefresh } = useContext(myContext);
+  console.log("Context API : refresh : ", refresh);
+  const [conversations, setConversations] = useState([]);
+  // console.log("Conversations of Sidebar : ", conversations);
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  // console.log("Data from LocalStorage : ", userData);
+  const nav = useNavigate();
+  if (!userData) {
+    console.log("User not Authenticated");
+    nav("/");
+  }
+
+  const user = userData.data;
+  useEffect(() => {
+    // console.log("Sidebar : ", user.token);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+
+    axios.get("http://localhost:3001/chat/", config).then((response) => {
+      console.log("Data refresh in sidebar ", response.data);
+      setConversations(response.data);
+      // setRefresh(!refresh);
+    });
+  }, [refresh]);
 
   return (
     <>
@@ -121,7 +149,7 @@ function Sidebar2() {
             </Typography>
             <IconButton
               onClick={() => {
-                setOpenDialog(true);
+                navigate("/dashboard/creategroup");
               }}
             >
               <Plus color="white" />
@@ -139,8 +167,133 @@ function Sidebar2() {
           {/* overflowY: "scroll" */}
           <Stack sx={{ flexGrow: 1, height: "100%" }}>
             <Stack spacing={2.4}>
-              {conversations.map((conv) => {
-                return <ChatElement props={conv} />;
+              {conversations.map((conversation, index) => {
+                var message =
+                  "No Privious Message, Please start new Conversation";
+                var chatName = "";
+                if (conversation.isGroupChat) {
+                  chatName = conversation.chatName;
+                } else {
+                  conversation.users.map((user) => {
+                    if (user._id != userData.data._id) {
+                      chatName = user.username;
+                    }
+                  });
+                }
+                if (conversation.latestMessage === undefined) {
+                  return (
+                    <motion.div
+                      whileHover={{ scale: 1.01 }} // Scale effect on hover
+                      whileTap={{ scale: 0.97 }} // Scale effect on click
+                      key={index}
+                      onClick={() => {
+                        navigate(
+                          "/dashboard/chat/" + conversation._id + "&" + chatName
+                        );
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: "95%",
+                          height: 60,
+                          borderRadius: 1,
+                          backgroundColor: "#404040",
+                          transition: "background-color 0.3s",
+                          "&:hover": {
+                            backgroundColor: "#555555",
+                            cursor: "pointer", // Add pointer cursor on hover
+                          },
+                        }}
+                        p={1.2}
+                      >
+                        <Stack
+                          direction="row"
+                          alignItems={"center"}
+                          justifyContent="space-between"
+                        >
+                          <Stack direction="row" spacing={2}>
+                            <Avatar src={faker.image.avatar()}></Avatar>
+                            <Stack spacing={0.3}>
+                              <Typography color={"white"} variant="subtitle2">
+                                {chatName}
+                              </Typography>
+                              <Typography variant="caption">
+                                {truncateText(message, 20)}
+                              </Typography>
+                            </Stack>
+                          </Stack>
+                          {/* <Stack spacing={1} alignItems={"center"}>
+                            <Typography sx={{ fontWeight: 600 }} variant="caption">
+                              {props.timeStamp}
+                            </Typography>
+                            <Badge
+                              className="unread-count"
+                              color="primary"
+                              badgeContent={unread}
+                            />
+                          </Stack> */}
+                        </Stack>
+                      </Box>
+                    </motion.div>
+                  );
+                } else {
+                  return (
+                    <motion.div
+                      whileHover={{ scale: 1.01 }} // Scale effect on hover
+                      whileTap={{ scale: 0.97 }} // Scale effect on click
+                      key={index}
+                      onClick={() => {
+                        navigate(
+                          "/dashboard/chat/" + conversation._id + "&" + chatName
+                        );
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: "95%",
+                          height: 60,
+                          borderRadius: 1,
+                          backgroundColor: "#404040",
+                          transition: "background-color 0.3s",
+                          "&:hover": {
+                            backgroundColor: "#555555",
+                            cursor: "pointer", // Add pointer cursor on hover
+                          },
+                        }}
+                        p={1.2}
+                      >
+                        <Stack
+                          direction="row"
+                          alignItems={"center"}
+                          justifyContent="space-between"
+                        >
+                          <Stack direction="row" spacing={2}>
+                            <Avatar src={faker.image.avatar()}></Avatar>
+
+                            <Stack spacing={0.3}>
+                              <Typography color={"white"} variant="subtitle2">
+                                {chatName}
+                              </Typography>
+                              <Typography variant="caption">
+                                {conversation.latestMessage.content}
+                              </Typography>
+                            </Stack>
+                          </Stack>
+                          {/* <Stack spacing={1} alignItems={"center"}>
+                            <Typography sx={{ fontWeight: 600 }} variant="caption">
+                              {props.timeStamp}
+                            </Typography>
+                            <Badge
+                              className="unread-count"
+                              color="primary"
+                              badgeContent={unread}
+                            />
+                          </Stack> */}
+                        </Stack>
+                      </Box>
+                    </motion.div>
+                  );
+                }
               })}
             </Stack>
           </Stack>

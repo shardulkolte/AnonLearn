@@ -16,12 +16,14 @@ function getSelectedItem(pathname) {
   switch (pathname) {
     case "/dashboard":
       return "Dashboard";
-    case "/dashboard/group":
+    case "/dashboard/chat/:_id":
       return "Group";
     case "/dashboard/users":
       return "User";
     case "/dashboard/availablegroups":
       return "Availablegroups";
+    case "/dashboard/creategroup":
+      return "CreateGroups";
 
     default:
       return "Dashboard";

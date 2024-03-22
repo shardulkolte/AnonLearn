@@ -7,7 +7,7 @@ import Register from "./Pages/Register";
 import Aboutus from "./Pages/Aboutus";
 import Dashboard from "./Pages/Dashboard";
 import Settings from "./Layouts/Settings";
-import Group from "./Layouts/Group";
+import Conversation from "./Layouts/Conversation";
 import Profile from "./Layouts/Profile";
 import GeneralApp from "./Pages/GeneralApp";
 import MainLayout from "./Layouts/MainLayout";
@@ -21,6 +21,7 @@ import { closeSnackBar } from "./redux/slices/app";
 import User_groups from "./Layouts/Users_group";
 import Users from "./Pages/Users";
 import Availablegroups from "./Pages/Availablegroups";
+import CreateGroups from "./Pages/CreateGroups";
 
 const vertical = "bottom";
 const horizontal = "center";
@@ -50,7 +51,8 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<GeneralApp />} />
             <Route path="/dashboard/users" element={<Users />} />
-            <Route path="/dashboard/group" element={<Group />} />
+            <Route path="/dashboard/chat/:_id" element={<Conversation />} />
+            <Route path="/dashboard/creategroup" element={<CreateGroups />} />
             <Route
               path="/dashboard/availablegroups"
               element={<Availablegroups />}

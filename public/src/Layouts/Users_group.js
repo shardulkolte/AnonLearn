@@ -33,8 +33,8 @@ import Picker from "@emoji-mart/react";
 import { dispatch } from "../redux/store";
 import { ToggleSidebar } from "../redux/slices/app";
 import { useDispatch } from "react-redux";
-import MessageOthers from "../components/MessageOthers";
-import Messageself from "../components/MessageSelf";
+import MessageOthers from "./MessageOthers";
+import Messageself from "./MessageSelf";
 import lo from "../Pages/logo.png";
 import {
   Search,
