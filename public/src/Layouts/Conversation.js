@@ -90,7 +90,9 @@ function Conversation() {
         <Box
           sx={{
             height: "100vh",
-            width: sideBar.open ? "calc(100vw - 750px)" : "calc(100vw - 400px)",
+            width: sideBar.close
+              ? "calc(100vw - 750px)"
+              : "calc(100vw - 400px)",
             backgroundColor: "#949494",
           }}
         >

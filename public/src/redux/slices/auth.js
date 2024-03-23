@@ -96,16 +96,16 @@ export function ForgotPassword(formValues) {
       .then(function (response) {
         console.log(response);
 
-        dispatch(
-          showSnackbar({ severity: "success", message: response.data.message })
-        );
+        // dispatch(
+        //   showSnackbar({ severity: "success", message: response.data.message })
+        // );
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: false })
         // );
       })
       .catch(function (error) {
         console.log(error);
-        dispatch(showSnackbar({ severity: "error", message: error.message }));
+        // dispatch(showSnackbar({ severity: "error", message: error.message }));
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: true })
         // );
@@ -188,16 +188,16 @@ export function RegisterUser(formValues) {
           slice.actions.updateRegisterEmail({ email: formValues.email })
         );
 
-        dispatch(
-          showSnackbar({ severity: "success", message: response.data.message })
-        );
+        // dispatch(
+        //   showSnackbar({ severity: "success", message: response.data.message })
+        // );
         dispatch(
           slice.actions.updateIsLoading({ isLoading: false, error: false })
         );
       })
       .catch(function (error) {
         console.log(error);
-        dispatch(showSnackbar({ severity: "error", message: error.message }));
+        // dispatch(showSnackbar({ severity: "error", message: error.message }));
         dispatch(
           slice.actions.updateIsLoading({ error: true, isLoading: false })
         );

@@ -46,7 +46,7 @@ const MessageOthers = ({ id, img, name, msg, time, unread, online, props }) => {
   // };
   return (
     <Stack direction={"row"} justifyContent={"start"} spacing={1} p={1}>
-      <Avatar src={faker.image.avatar()}></Avatar>
+      <Avatar>{props.sender.username[0]}</Avatar>
       <Box
         p={1}
         sx={{

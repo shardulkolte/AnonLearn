@@ -82,7 +82,9 @@ function Users() {
         <Box
           sx={{
             height: "100vh",
-            width: sideBar.open ? "calc(100vw - 750px)" : "calc(100vw - 400px)",
+            width: sideBar.close
+              ? "calc(100vw - 750px)"
+              : "calc(100vw - 400px)",
             backgroundColor: "#949494",
           }}
         >
@@ -210,7 +212,7 @@ function Users() {
                               spacing={2}
                               alignItems={"center"}
                             >
-                              <Avatar src={faker.image.avatar()}></Avatar>
+                              <Avatar>{user.username[0]}</Avatar>
                               <Stack spacing={0.3}>
                                 <Typography color="white" variant="subtitle2">
                                   {user.username}

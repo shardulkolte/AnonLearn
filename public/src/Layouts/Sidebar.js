@@ -26,6 +26,8 @@ function Sidebar() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const userData = JSON.parse(localStorage.getItem("userData"));
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -117,8 +119,9 @@ function Sidebar() {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
-                src={faker.image.avatar()}
-              />
+              >
+                {userData.data.username[0]}
+              </Avatar>
               <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}

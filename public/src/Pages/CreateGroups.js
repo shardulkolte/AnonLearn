@@ -51,7 +51,7 @@ function CreateGroups() {
       "http://localhost:3001/chat/createGroup",
       {
         name: groupName,
-        users: '["65fbe55202a361995285b7ac","65f9241ec0038b78d6b4c510"]',
+        users: "[]",
       },
       config
     );

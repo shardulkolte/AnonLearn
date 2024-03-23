@@ -3,6 +3,12 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   Avatar,
   Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Divider,
   FormGroup,
   IconButton,
@@ -48,6 +54,7 @@ import lo from "./logo.png";
 import { styled } from "@mui/material/styles";
 import Picker from "@emoji-mart/react";
 import { refreshSidebarFun } from "../redux/slices/refreshSidebar";
+import { showSnackbar } from "../redux/slices/app";
 
 // const isAuthenticated = false;
 
@@ -77,9 +84,18 @@ const StyledInput = styled(TextField)(({ theme }) => ({
 
 function Availablegroups() {
   const [openPicker, setOpenPicker] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const { sideBar, chat_type, room_id } = useSelector((store) => store.app);
   const { refresh, setRefresh } = useContext(myContext);
-
+  // const [message, setMessage] = useState("");
   const lightTheme = useSelector((state) => state.themeKey);
   const dispatch = useDispatch();
   const [groups, SetGroups] = useState([]);
@@ -119,7 +135,9 @@ function Availablegroups() {
         <Box
           sx={{
             height: "100vh",
-            width: sideBar.open ? "calc(100vw - 750px)" : "calc(100vw - 400px)",
+            width: sideBar.close
+              ? "calc(100vw - 750px)"
+              : "calc(100vw - 400px)",
             backgroundColor: "#949494",
           }}
         >
@@ -210,15 +228,40 @@ function Availablegroups() {
                               Authorization: `Bearer ${userData.data.token}`,
                             },
                           };
-                          axios.put(
-                            "http://localhost:3001/chat/addSelfToGroup",
-                            {
-                              chatId: group._id,
-                              userId: userData.data._id,
-                            },
-                            config
-                          );
+                          axios
+                            .put(
+                              "http://localhost:3001/chat/addSelfToGroup",
+                              {
+                                chatId: group._id,
+                                userId: userData.data._id,
+                              },
+                              config
+                            )
+                            .then(function (response) {
+                              console.log(response);
+
+                              // setMessage(response);
+                              dispatch(
+                                showSnackbar({
+                                  severity: "error",
+                                  message: response.data.message,
+                                })
+                              );
+                            })
+                            .catch(function (error) {
+                              console.log(error);
+                              dispatch(
+                                showSnackbar({
+                                  severity: "error",
+                                  message: error.response.data.message,
+                                })
+                              );
+                              // dispatch(
+                              //   slice.actions.updateIsLoading({ isLoading: false, error: true })
+                              // );
+                            });
                           dispatch(refreshSidebarFun());
+                          // handleClickOpen();
                         }}
                       >
                         <Box
@@ -245,7 +288,7 @@ function Availablegroups() {
                               spacing={2}
                               alignItems={"center"}
                             >
-                              <Avatar src={faker.image.avatar()}></Avatar>
+                              <Avatar>{group.chatName[0]}</Avatar>
                               <Stack spacing={0.3}>
                                 <Typography color="white" variant="subtitle2">
                                   {group.chatName}

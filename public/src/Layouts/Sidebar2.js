@@ -98,7 +98,7 @@ function Sidebar2() {
     axios.get("http://localhost:3001/chat/", config).then((response) => {
       console.log("Data refresh in sidebar ", response.data);
       setConversations(response.data);
-      // setRefresh(!refresh);
+      setRefresh(!refresh);
     });
   }, [refresh]);
 
@@ -113,7 +113,7 @@ function Sidebar2() {
           overflowY: "scroll",
 
           height: "100vh",
-          width: 320,
+          width: 340,
           backgroundColor: "#202020",
           boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
         }}
@@ -212,7 +212,7 @@ function Sidebar2() {
                           justifyContent="space-between"
                         >
                           <Stack direction="row" spacing={2}>
-                            <Avatar src={faker.image.avatar()}></Avatar>
+                            <Avatar>{chatName[0]}</Avatar>
                             <Stack spacing={0.3}>
                               <Typography color={"white"} variant="subtitle2">
                                 {chatName}

@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+changes to run on other browser
+
+App.js
+app.js-show snack, close and open snackbar bar commented
+auth.js show snack commented
+pages me sidebar open ke badle close kiya hai

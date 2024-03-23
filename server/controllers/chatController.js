@@ -132,9 +132,54 @@ const groupExit = asyncHandler(async (req, res) => {
   }
 });
 
+// const addSelfToGroup = asyncHandler(async (req, res) => {
+//   const { chatId, userId } = req.body;
+
+//   const added = await Chat.findByIdAndUpdate(
+//     chatId,
+//     {
+//       $push: { users: userId },
+//     },
+//     {
+//       new: true,
+//     }
+//   )
+//     .populate("users", "-password")
+//     .populate("groupAdmin", "-password");
+
+//   if (!added) {
+//     res.status(404);
+//     throw new Error("Chat Not Found");
+//   } else {
+//     res.json(added);
+//   }
+// });
+
 const addSelfToGroup = asyncHandler(async (req, res) => {
   const { chatId, userId } = req.body;
 
+  // Check if the user is already present in the chat
+  const chat = await Chat.findById(chatId);
+  if (!chat) {
+    res.status(400).json({
+      status: "error",
+      message: "Chat not found",
+    });
+
+    return;
+  }
+
+  const isUserPresent = chat.users.includes(userId);
+  if (isUserPresent) {
+    res.status(400).json({
+      status: "error",
+      message: "Already joined",
+    });
+
+    return;
+  }
+
+  // If user is not already present, add the user to the chat
   const added = await Chat.findByIdAndUpdate(
     chatId,
     {
@@ -148,12 +193,17 @@ const addSelfToGroup = asyncHandler(async (req, res) => {
     .populate("groupAdmin", "-password");
 
   if (!added) {
-    res.status(404);
-    throw new Error("Chat Not Found");
+    res.status(404).json({ error: "Chat Not Found" });
   } else {
-    res.json(added);
+    res.status(200).json({
+      status: "success",
+      message: "Added successfully",
+    });
+
+    return;
   }
 });
+
 module.exports = {
   accessChat,
   fetchChats,

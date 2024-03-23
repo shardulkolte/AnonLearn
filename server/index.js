@@ -16,12 +16,12 @@ const http = require("http");
 const User = require("./models/userModel");
 const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000", // change to your frontend url if needed
-    methods: ["GET", "POST"],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000", // change to your frontend url if needed
+//     methods: ["GET", "POST"],
+//   },
+// });
 
 app.use(routes);
 
@@ -47,57 +47,33 @@ server.listen(port, () => {
   console.log(`Server Started on Port ${port}`);
 });
 
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000", // change to your frontend url if needed
+    methods: ["GET", "POST"],
+  },
+  pingTimeout: 60000,
+});
+
 io.on("connection", async (socket) => {
-  // console.log(JSON.stringify(socket.handshake.query));
-  const user_id = socket.handshake.query["user_id"];
-
-  const socket_id = socket.id;
-  console.log(`User connected ${socket_id}`);
-
-  if (Boolean(user_id)) {
-    //user_id != null &&
-    try {
-      User.findByIdAndUpdate(user_id, {
-        socket_id: socket.id,
-        status: "Online",
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  socket.on("text_message", async (data) => {
-    console.log("Received message:", data);
+  socket.on("setup", (user) => {
+    socket.join(user.data._id);
+    socket.emit("connected");
   });
 
-  // handle Media/Document Message
-  socket.on("file_message", (data) => {
-    console.log("Received message:", data);
-
-    // data: {to, from, text, file}
-
-    // Get the file extension
-    const fileExtension = path.extname(data.file.name);
-
-    // Generate a unique filename
-    const filename = `${Date.now()}_${Math.floor(
-      Math.random() * 10000
-    )}${fileExtension}`;
+  socket.on("join chat", (room) => {
+    socket.join(room);
   });
 
-  // -------------- HANDLE SOCKET DISCONNECTION ----------------- //
-
-  socket.on("end", async (data) => {
-    // Find user by ID and set status as offline
-
-    if (data.user_id) {
-      await User.findByIdAndUpdate(data.user_id, { status: "Offline" });
+  socket.on("new message", (newMessageStatus) => {
+    var chat = newMessageStatus.chat;
+    if (!chat.users) {
+      return console.log("chat.users not defined");
     }
-
-    // broadcast to all conversation rooms of this user that this user is offline (disconnected)
-
-    console.log("closing connection");
-    socket.disconnect(0);
+    chat.users.forEach((user) => {
+      if (user._id == newMessageStatus.sender._id) return;
+      socket.in(user._id).emit("message recieved", newMessageRecieved);
+    });
   });
 });
 
