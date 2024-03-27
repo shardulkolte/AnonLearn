@@ -54,7 +54,14 @@ const Messageself = ({ id, img, name, msg, time, unread, online, props }) => {
         }}
       >
         <Stack spacing={0.1}>
-          <Typography variant="subtitle2" color={"white"}>
+          {/* <Typography variant="subtitle2" color={"white"}>
+            {props.content}
+          </Typography> */}
+          <Typography
+            variant="subtitle2"
+            color="white"
+            sx={{ wordWrap: "break-word" }}
+          >
             {props.content}
           </Typography>
         </Stack>

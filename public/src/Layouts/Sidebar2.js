@@ -124,9 +124,9 @@ function Sidebar2() {
             justifyContent="space-between"
             direction="row"
           >
-            <Typography variant="h5" color={"white"}>
+            {/* <Typography variant="h5" color={"white"}>
               Groups
-            </Typography>
+            </Typography> */}
           </Stack>
           <Stack sx={{ width: "100%" }}>
             <Search>
@@ -217,7 +217,7 @@ function Sidebar2() {
                               <Typography color={"white"} variant="subtitle2">
                                 {chatName}
                               </Typography>
-                              <Typography variant="caption">
+                              <Typography variant="subtitle2">
                                 {truncateText(message, 20)}
                               </Typography>
                             </Stack>
@@ -268,13 +268,13 @@ function Sidebar2() {
                           justifyContent="space-between"
                         >
                           <Stack direction="row" spacing={2}>
-                            <Avatar src={faker.image.avatar()}></Avatar>
+                            <Avatar>{chatName[0]}</Avatar>
 
                             <Stack spacing={0.3}>
                               <Typography color={"white"} variant="subtitle2">
                                 {chatName}
                               </Typography>
-                              <Typography variant="caption">
+                              <Typography variant="subtitle2" color={"white"}>
                                 {truncateText(
                                   conversation.latestMessage.content,
                                   20

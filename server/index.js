@@ -16,13 +16,6 @@ const http = require("http");
 const User = require("./models/userModel");
 const server = http.createServer(app);
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: "http://localhost:3000", // change to your frontend url if needed
-//     methods: ["GET", "POST"],
-//   },
-// });
-
 app.use(routes);
 
 //mongo atlas database---------------------------------------------------

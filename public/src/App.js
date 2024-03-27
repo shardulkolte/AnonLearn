@@ -8,7 +8,6 @@ import Aboutus from "./Pages/Aboutus";
 import Dashboard from "./Pages/Dashboard";
 import Settings from "./Layouts/Settings";
 import Conversation from "./Layouts/Conversation";
-import Profile from "./Layouts/Profile";
 import GeneralApp from "./Pages/GeneralApp";
 import MainLayout from "./Layouts/MainLayout";
 import ResetPassword from "./Pages/ResetPassword";

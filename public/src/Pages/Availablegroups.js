@@ -243,7 +243,7 @@ function Availablegroups() {
                               // setMessage(response);
                               dispatch(
                                 showSnackbar({
-                                  severity: "error",
+                                  severity: "success",
                                   message: response.data.message,
                                 })
                               );

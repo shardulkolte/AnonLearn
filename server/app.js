@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-// const auth = require("./routes/auth");
 const routes = require("./routes/index");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
@@ -11,9 +10,6 @@ const bodyParser = require("body-parser");
 const xss = require("xss");
 const app = express();
 const dotenv = require("dotenv");
-
-// const connectMongo = require("./db/mongoConnector"); //bhavesh
-// connectMongo();//bhavesh
 
 dotenv.config({ path: "./.env" });
 
@@ -52,9 +48,6 @@ app.use(
 );
 
 app.use(mongosanitize());
-
-// app.use(xss());
-
 app.use(routes);
 
 module.exports = app;

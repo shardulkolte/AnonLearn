@@ -1,27 +1,27 @@
 .main-footer {
-    color: white;
-    background-color: rgb(29, 27, 27);
-    padding-top: 3em;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
-.lin{
-    color: blue;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 2rem;
+  color: white;
+  background-color: rgb(29, 27, 27);
+  padding-top: 3em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
-#footerh1 h3{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    letter-spacing: 1px;
+.lin {
+  color: blue;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#footerh1 h3 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  letter-spacing: 1px;
 }
 
-.footer-icon i{
-    margin:0.4rem 0.3rem ;
-    padding: 0.3rem;
-    background: rgb(207, 198, 195);
-    color: blue;
-    border-radius: 50% ;
+.footer-icon i {
+  margin: 0.4rem 0.3rem;
+  padding: 0.3rem;
+  background: rgb(207, 198, 195);
+  color: blue;
+  border-radius: 50%;
 }

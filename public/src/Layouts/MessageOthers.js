@@ -59,7 +59,14 @@ const MessageOthers = ({ id, img, name, msg, time, unread, online, props }) => {
           <Typography color={"black"} variant="subtitle2">
             {props.sender.username}
           </Typography>
-          <Typography variant="subtitle2" color={"white"}>
+          {/* <Typography variant="subtitle2" color={"white"}>
+            {props.content}
+          </Typography> */}
+          <Typography
+            variant="subtitle2"
+            color="white"
+            sx={{ wordWrap: "break-word" }}
+          >
             {props.content}
           </Typography>
         </Stack>

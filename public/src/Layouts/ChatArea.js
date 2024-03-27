@@ -2,7 +2,6 @@ import {
   Avatar,
   Box,
   Stack,
-  Badge,
   Typography,
   IconButton,
   TextField,
@@ -10,24 +9,10 @@ import {
 } from "@mui/material";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { styled } from "@mui/material/styles";
-import {
-  PaperPlaneTilt,
-  Image,
-  Sticker,
-  Camera,
-  File,
-  User,
-  Trash,
-} from "phosphor-react";
-import Message from "./Message";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
-import { dispatch } from "../redux/store";
-import { ToggleSidebar } from "../redux/slices/app";
+import { PaperPlaneTilt, Trash } from "phosphor-react";
 import { useDispatch } from "react-redux";
 import MessageOthers from "./MessageOthers";
 import MessageSelf from "./MessageSelf";
-import { faker } from "@faker-js/faker";
 import { useParams } from "react-router-dom";
 import { myContext } from "../Pages/Dashboard";
 import axios from "axios";
@@ -125,6 +110,7 @@ const ChatArea = ({ props }) => {
         // console.log("Data from Acess Chat API ", data);
       });
     setAllMessagesCopy(allMessages);
+    // scrollToBottom();
   }, [refresh, chat_id, userData.data.token, allMessages]);
 
   if (!loaded) {
@@ -188,9 +174,6 @@ const ChatArea = ({ props }) => {
                 <Typography variant="subtitle2" color={"white"}>
                   {chat_user}
                 </Typography>
-                {/* <Typography variant="caption" color={"white"}>
-                  {props.timeStamp}
-                </Typography> */}
               </Stack>
             </Stack>
             <Stack direction={"row"} alignItems={"center"} spacing={1}>
@@ -204,18 +187,14 @@ const ChatArea = ({ props }) => {
         {/* Msg */}
         <Box
           width={"100%"}
-          sx={{ flexGrow: 1, height: "100%", overflowY: "scroll" }}
+          sx={{
+            flexGrow: 1,
+            height: "100%",
+            overflowY: "scroll",
+            overflowX: "hidden",
+          }}
           spacing={1}
         >
-          {/* <MessageOthers />
-          <Messageself />
-          <MessageOthers />
-          <Messageself />
-          <MessageOthers />
-          <Messageself />
-          <MessageOthers />
-          <Messageself /> */}
-
           {allMessages
             .slice(0)
             // .reverse()
