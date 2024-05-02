@@ -54,7 +54,7 @@ import lo from "./logo.png";
 import { styled } from "@mui/material/styles";
 import Picker from "@emoji-mart/react";
 import { refreshSidebarFun } from "../redux/slices/refreshSidebar";
-import { showSnackbar } from "../redux/slices/app";
+// import { showSnackbar } from "../redux/slices/app";
 
 // const isAuthenticated = false;
 
@@ -200,7 +200,7 @@ function Availablegroups() {
                       right: 100,
                     }}
                   ></Box>
-                  <ChatInput />
+                  {/* <ChatInput /> */}
                 </Stack>
               </Stack>
             </Stack>
@@ -241,21 +241,21 @@ function Availablegroups() {
                               console.log(response);
 
                               // setMessage(response);
-                              dispatch(
-                                showSnackbar({
-                                  severity: "success",
-                                  message: response.data.message,
-                                })
-                              );
+                              // dispatch(
+                              //   showSnackbar({
+                              //     severity: "success",
+                              //     message: response.data.message,
+                              //   })
+                              // );
                             })
                             .catch(function (error) {
                               console.log(error);
-                              dispatch(
-                                showSnackbar({
-                                  severity: "error",
-                                  message: error.response.data.message,
-                                })
-                              );
+                              // dispatch(
+                              //   showSnackbar({
+                              //     severity: "error",
+                              //     message: error.response.data.message,
+                              //   })
+                              // );
                               // dispatch(
                               //   slice.actions.updateIsLoading({ isLoading: false, error: true })
                               // );

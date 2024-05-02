@@ -31,10 +31,10 @@ const Alert = React.forwardRef((props, ref) => (
 
 const App = () => {
   const dispatch = useDispatch();
-  // const { open } = useSelector((state) => state.app);
-  const { severity, message, open } = useSelector(
-    (state) => state.app.snackbar
-  );
+  const { open } = useSelector((state) => state.app);
+  // const { severity, message, open } = useSelector(
+  //   (state) => state.app.snackbar
+  // );
   return (
     <>
       <Router>
@@ -61,7 +61,7 @@ const App = () => {
         </Routes>
       </Router>
 
-      {message && open ? (
+      {/* {message && open ? (
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}
           open={open}
@@ -84,7 +84,7 @@ const App = () => {
         </Snackbar>
       ) : (
         <></>
-      )}
+      )} */}
     </>
   );
 };

@@ -121,6 +121,24 @@ export default function RegisterForm() {
       >
         Register
       </Button>
+      <Stack direction="column">
+        <Stack direction="row">
+          <Typography variant="body2" color={"white"}>
+            Note:
+          </Typography>
+          <Typography variant="body2" color={"white"}>
+            Please use a pseudonym(nickname)
+          </Typography>
+        </Stack>
+        <Stack direction="row">
+          <Typography variant="body2" color={"white"}>
+            instead of your real name for anonymity.
+          </Typography>
+          {/* <Typography variant="body2" color={"white"}>
+            Please use a pseudonym(nickname) 
+          </Typography> */}
+        </Stack>
+      </Stack>
     </FormProvider>
   );
 }

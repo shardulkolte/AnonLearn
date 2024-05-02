@@ -50,18 +50,18 @@ const slice = createSlice({
     //   state.tab = action.payload.tab;
     // },
 
-    openSnackBar(state, action) {
-      // console.log(action.payload);
-      state.snackbar.open = true;
-      state.snackbar.severity = action.payload.severity;
-      state.snackbar.message = action.payload.message;
-    },
-    closeSnackBar(state, action) {
-      // console.log("This is getting executed");
-      state.snackbar.open = false;
-      state.snackbar.severity = null;
-      state.snackbar.message = null;
-    },
+    // openSnackBar(state, action) {
+    //   // console.log(action.payload);
+    //   state.snackbar.open = true;
+    //   state.snackbar.severity = action.payload.severity;
+    //   state.snackbar.message = action.payload.message;
+    // },
+    // closeSnackBar(state, action) {
+    //   // console.log("This is getting executed");
+    //   state.snackbar.open = false;
+    //   state.snackbar.severity = null;
+    //   state.snackbar.message = null;
+    // },
     updateUsers(state, action) {
       state.users = action.payload.users;
     },
@@ -86,24 +86,24 @@ export default slice.reducer;
 
 // ----------------------------------------------------------------------
 
-export const closeSnackBar = () => async (dispatch, getState) => {
-  dispatch(slice.actions.closeSnackBar());
-};
+// export const closeSnackBar = () => async (dispatch, getState) => {
+//   dispatch(slice.actions.closeSnackBar());
+// };
 
-export const showSnackbar =
-  ({ severity, message }) =>
-  async (dispatch, getState) => {
-    dispatch(
-      slice.actions.openSnackBar({
-        message,
-        severity,
-      })
-    );
+// export const showSnackbar =
+//   ({ severity, message }) =>
+//   async (dispatch, getState) => {
+//     dispatch(
+//       slice.actions.openSnackBar({
+//         message,
+//         severity,
+//       })
+//     );
 
-    setTimeout(() => {
-      dispatch(slice.actions.closeSnackBar());
-    }, 4000);
-  };
+//     setTimeout(() => {
+//       dispatch(slice.actions.closeSnackBar());
+//     }, 4000);
+//   };
 
 export function ToggleSidebar() {
   return async (dispatch, getState) => {

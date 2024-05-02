@@ -142,16 +142,16 @@ export function LoginUser(formValues) {
         localStorage.setItem("userData", JSON.stringify(response));
         // window.localStorage.setItem("token", response.data.token);
 
-        dispatch(
-          showSnackbar({ severity: "success", message: response.data.message })
-        );
+        // dispatch(
+        //   showSnackbar({ severity: "success", message: response.data.message })
+        // );
         dispatch(
           slice.actions.updateIsLoading({ isLoading: false, error: false })
         );
       })
       .catch(function (error) {
         console.log(error);
-        dispatch(showSnackbar({ severity: "error", message: error.message }));
+        // dispatch(showSnackbar({ severity: "error", message: error.message }));
         // dispatch(
         //   slice.actions.updateIsLoading({ isLoading: false, error: true })
         // );

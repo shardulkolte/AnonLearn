@@ -71,7 +71,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 changes to run on other browser
 
-App.js
+App.js-comment message and open ...................and comment severety message
 app.js-show snack, close and open snackbar bar commented
 auth.js show snack commented
+Availablegroups.js coment
 pages me sidebar open ke badle close kiya hai

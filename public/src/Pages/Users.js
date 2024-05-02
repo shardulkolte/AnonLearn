@@ -153,7 +153,7 @@ function Users() {
                       right: 100,
                     }}
                   ></Box>
-                  <ChatInput />
+                  {/* <ChatInput /> */}
                 </Stack>
               </Stack>
             </Stack>
